@@ -86,11 +86,13 @@ public class Picture extends SimplePicture {
 	}
 
 	/** Method to set the blue to 0 */
-	public void zeroBlue() {
+	public void onlyBlue() {
 		Pixel[][] pixels = this.getPixels2D();
 		for (Pixel[] rowArray : pixels) {
 			for (Pixel pixelObj : rowArray) {
-				pixelObj.setBlue(0);
+				pixelObj.setBlue((255 - getBlue()));
+				pixelObj.setGreen((255 - getGreen()));
+				pixelObj.setRed((255 - getRed()));
 			}
 		}
 	}
@@ -168,7 +170,7 @@ public class Picture extends SimplePicture {
 		this.copy(flower2, 100, 0);
 		this.copy(flower1, 200, 0);
 		Picture flowerNoBlue = new Picture(flower2);
-		flowerNoBlue.zeroBlue();
+		//flowerNoBlue.zeroBlue();
 		this.copy(flowerNoBlue, 300, 0);
 		this.copy(flower1, 400, 0);
 		this.copy(flower2, 500, 0);
@@ -206,7 +208,7 @@ public class Picture extends SimplePicture {
 	public static void main(String[] args) {
 		Picture beach = new Picture("beach.jpg");
 		beach.explore();
-		beach.zeroBlue();
+		//beach.zeroBlue();
 		beach.explore();
 	}
 
